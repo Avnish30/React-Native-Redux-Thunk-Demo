@@ -62,7 +62,13 @@ const posts = props => {
                 uri: 'https://source.unsplash.com/1600x900/?nature' + i,
               }}></Image>
 
-            <Text style={{paddingLeft: 5}}>{post.body}</Text>
+            <Text
+              style={{
+                paddingLeft: 5,
+                fontFamily: 'Roboto-BlackItalic',
+              }}>
+              {post.body}
+            </Text>
           </View>
         ))}
         {/* {props.posts.map(post => (
