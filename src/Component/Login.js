@@ -1,5 +1,8 @@
 import React, {useState, useEffect} from 'react';
+import auth from '@react-native-firebase/auth';
 import {openDatabase} from 'react-native-sqlite-storage';
+import firebase from '@react-native-firebase/app';
+import {LoginManager, AccessToken} from 'react-native-fbsdk';
 import {
   View,
   Text,
@@ -8,10 +11,16 @@ import {
   TextInput,
   TouchableHighlight,
 } from 'react-native';
+import {
+  GoogleSignin,
+  GoogleSigninButton,
+  statusCodes,
+} from '@react-native-google-signin/google-signin';
 import {connect} from 'react-redux';
 import {Add, deleteData} from '../Action/actionTypes';
 import {createAction} from '../Action/action';
-
+// const config = {};
+// firebase.initializeApp(config);
 const db = openDatabase({name: 'userDb.db'});
 function Login(props) {
   console.log(props);
@@ -25,10 +34,57 @@ function Login(props) {
     setPassword(null);
   };
   const handleLogout = () => {
-    props.navigation.openDrawer();
-    props.changeName(deleteData, null, null);
+    auth()
+      .signOut()
+      .then(() => console.log('User signed out!'));
+    GoogleSignin.signOut();
+    LoginManager.logOut();
   };
+  async function onGoogleButtonPress() {
+    // Get the users ID token
+    console.log('under google');
+    const {idToken} = await GoogleSignin.signIn();
+    console.log(idToken);
+    console.log(await GoogleSignin.getCurrentUser());
+    // Create a Google credential with the token
+    const googleCredential = auth.GoogleAuthProvider.credential(idToken);
+    console.log(googleCredential);
+    // Sign-in the user with the credential
+    return await auth().signInWithCredential(googleCredential);
+  }
+  async function onFacebookButtonPress() {
+    // Attempt login with permissions
+    const result = await LoginManager.logInWithPermissions([
+      'public_profile',
+      'email',
+    ]);
+
+    if (result.isCancelled) {
+      throw 'User cancelled the login process';
+    }
+
+    // Once signed in, get the users AccesToken
+    const data = await AccessToken.getCurrentAccessToken();
+    console.log(data);
+
+    if (!data) {
+      throw 'Something went wrong obtaining access token';
+    }
+
+    // Create a Firebase credential with the AccessToken
+    const facebookCredential = auth.FacebookAuthProvider.credential(
+      data.accessToken,
+    );
+
+    // Sign-in the user with the credential
+    return await auth().signInWithCredential(facebookCredential);
+  }
   useEffect(props => {
+    // console.log(auth.getCurrentAccessToken());
+    GoogleSignin.configure({
+      webClientId:
+        '48541765522-uo4uk98h0cmpb6to7uu2bo520h8qo70k.apps.googleusercontent.com',
+    });
     // props.navigation.setOptions({
     //   headerRight: () => (
     //     <Button
@@ -88,10 +144,29 @@ function Login(props) {
       <TouchableHighlight style={styles.btn}>
         <Button title="login" onPress={() => handleLogin()} />
       </TouchableHighlight>
-      <Button
-        style={styles.btn}
-        title="logout"
-        onPress={() => handleLogout()}
+      <TouchableHighlight style={styles.btn}>
+        <Button title="logout" onPress={() => handleLogout()} />
+      </TouchableHighlight>
+      <TouchableHighlight style={styles.btn}>
+        <Button
+          title="fb login"
+          onPress={() =>
+            onFacebookButtonPress().then(() =>
+              console.log('Signed in with Facebook!'),
+            )
+          }
+        />
+      </TouchableHighlight>
+      <GoogleSigninButton
+        onPress={() =>
+          onGoogleButtonPress().then(() =>
+            console.log('Signed in with Google!'),
+          )
+        }
+        style={{width: 192, height: 48}}
+        size={GoogleSigninButton.Size.Wide}
+        color={GoogleSigninButton.Color.Dark}
+        // onPress={this._signIn}
       />
     </View>
   );
