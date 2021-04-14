@@ -2,6 +2,8 @@ import React, {useEffect} from 'react';
 import Login from './src/Component/Login';
 import NewLogin from './src/Component/NewLogin';
 import Home from './src/Component/Home';
+import Profile from './src/Component/Profile';
+import Dashboard from './src/Component/Dashboard';
 import posts from './src/Component/posts';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
@@ -31,7 +33,9 @@ function DrawerApp() {
   return (
     // <Provider store={storex}>
     //   <NavigationContainer>
-    <Drawer.Navigator initialRouteName="NewLogin">
+    <Drawer.Navigator initialRouteName="Dashboard">
+      <Drawer.Screen name="Dashboard" component={Dashboard} />
+      <Drawer.Screen name="Profile" component={Profile} />
       <Drawer.Screen name="NewLogin" component={NewLogin} />
       <Drawer.Screen name="Home" component={Home} />
       <Drawer.Screen name="Login" component={Login} />
