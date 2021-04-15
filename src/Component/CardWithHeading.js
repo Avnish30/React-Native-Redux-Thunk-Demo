@@ -25,7 +25,7 @@ const CardWithHeading = ({
   image,
 }) => {
   return (
-    <View style={{}}>
+    <View>
       <ImageBackground
         imageStyle={{borderTopLeftRadius: 6, borderTopRightRadius: 6}}
         source={{
@@ -71,5 +71,11 @@ const CardWithHeading = ({
     </View>
   );
 };
-
+const styles = StyleSheet.create({
+  image: {
+    width: 170,
+    height: 170,
+    padding: 0,
+  },
+});
 export default CardWithHeading;

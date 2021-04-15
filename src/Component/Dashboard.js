@@ -14,6 +14,7 @@ import {
   ScrollView,
   ImageBackground,
 } from 'react-native';
+import {Card} from 'react-native-paper';
 const image = {uri: 'https://reactjs.org/logo-og.png'};
 const CardDataWithrating = [
   {
@@ -316,7 +317,7 @@ const Dashboard = () => {
               ItemSeparatorComponent={() => <View style={{width: 16}} />}
               horizontal
               data={CardData}
-              renderItem={({item}) => ListCard(item)}></FlatList>
+              renderItem={({item}) => CardWithHeading(item)}></FlatList>
           </View>
         </View>
         <View
@@ -343,6 +344,15 @@ const Dashboard = () => {
               data={CardDataWithrating}
               renderItem={({item}) => CardWithRating(item)}></FlatList>
           </View>
+          <CardWithHeading
+            month="Oct"
+            date="31"
+            fulldate="Thu,oct,31 9:00AM"
+            address="Tobacco Dock London"
+            heading1="BBC Music"
+            heading2="Introducing LIVE"
+            image="https://source.unsplash.com/1600x900/?nightclub111"
+          />
         </View>
       </View>
     </ScrollView>
