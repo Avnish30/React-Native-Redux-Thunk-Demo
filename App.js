@@ -1,11 +1,15 @@
 import React, {useEffect} from 'react';
+import {Icon} from 'react-native-elements';
 import Login from './src/Component/Login';
 import NewLogin from './src/Component/NewLogin';
 import Home from './src/Component/Home';
+import Profile from './src/Component/Profile';
+import Dashboard from './src/Component/Dashboard';
 import posts from './src/Component/posts';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {Provider} from 'react-redux';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {Button} from 'react-native';
 import {createStore, applyMiddleware, combineReducers, compose} from 'redux';
 import SampleReducer from './src/Reducer/SampleReducer';
@@ -25,13 +29,69 @@ const storex = createStore(
 );
 
 const Stack = createStackNavigator();
-
+const Tab = createBottomTabNavigator();
 const Drawer = createDrawerNavigator();
+function TabApp() {
+  return (
+    <Tab.Navigator
+      tabBarOptions={{
+        activeTintColor: '#ff6363',
+      }}>
+      <Tab.Screen
+        name="Dashboard"
+        component={Dashboard}
+        options={{
+          tabBarIcon: ({tintColor}) => (
+            <Icon
+              reverse
+              name="dashboard"
+              type="antdesign"
+              color="#ff6363"
+              size={12}
+            />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Login"
+        component={NewLogin}
+        options={{
+          tabBarIcon: ({tintColor}) => (
+            <Icon
+              reverse
+              name="login"
+              type="antdesign"
+              color="#ff6363"
+              size={12}
+            />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Profile"
+        component={Profile}
+        options={{
+          tabBarIcon: ({tintColor}) => (
+            <Icon
+              reverse
+              name="profile"
+              type="antdesign"
+              color="#ff6363"
+              size={12}
+            />
+          ),
+        }}
+      />
+    </Tab.Navigator>
+  );
+}
 function DrawerApp() {
   return (
     // <Provider store={storex}>
     //   <NavigationContainer>
-    <Drawer.Navigator initialRouteName="NewLogin">
+    <Drawer.Navigator initialRouteName="Dashboard">
+      <Drawer.Screen name="Dashboard" component={Dashboard} />
+      <Drawer.Screen name="Profile" component={Profile} />
       <Drawer.Screen name="NewLogin" component={NewLogin} />
       <Drawer.Screen name="Home" component={Home} />
       <Drawer.Screen name="Login" component={Login} />
@@ -118,7 +178,7 @@ function App({navigation}) {
                 />
               ),
             }}
-            component={DrawerApp}
+            component={TabApp}
           />
           <Stack.Screen
             name="Home"
