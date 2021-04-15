@@ -1,19 +1,6 @@
 import React from 'react';
-import {Icon} from 'react-native-elements';
 
-import {
-  View,
-  Text,
-  Button,
-  TextInput,
-  TouchableHighlight,
-  TouchableOpacity,
-  StyleSheet,
-  FlatList,
-  Image,
-  ScrollView,
-  ImageBackground,
-} from 'react-native';
+import {View, Text, StyleSheet, ImageBackground} from 'react-native';
 
 const CardWithHeading = ({
   month,

@@ -1,0 +1,122 @@
+export const CardDataWithrating = [
+  {
+    image: 'https://source.unsplash.com/1600x900/?nature21',
+    heading2: 'Ramblin` Man Fair',
+    heading1: 'Spirit of Rock',
+    rating: '9.5',
+  },
+  {
+    image: 'https://source.unsplash.com/1600x900/?nature22',
+    heading2: 'Ramblin` Man Fair',
+    heading1: 'Spirit of Rock',
+    rating: '9.5',
+  },
+  {
+    image: 'https://source.unsplash.com/1600x900/?nature23',
+    heading2: 'Ramblin` Man Fair',
+    heading1: 'Spirit of Rock',
+    rating: '9.5',
+  },
+  {
+    image: 'https://source.unsplash.com/1600x900/?nature41',
+    heading2: 'Ramblin` Man Fair',
+    heading1: 'Spirit of Rock',
+    rating: '9.5',
+  },
+  {
+    image: 'https://source.unsplash.com/1600x900/?nature31',
+    heading2: 'Ramblin` Man Fair',
+    heading1: 'Spirit of Rock',
+    rating: '9.5',
+  },
+  {
+    image: 'https://source.unsplash.com/1600x900/?nature29',
+    heading2: 'Ramblin` Man Fair',
+    heading1: 'Spirit of Rock',
+    rating: '9.5',
+  },
+];
+export const ListData = [
+  {
+    iconName: 'compass',
+    Type: 'font-awesome-5',
+    color: 'red',
+    text: 'All',
+  },
+  {
+    iconName: 'music',
+    Type: 'font-awesome',
+    color: '#88a4b3',
+    text: 'Music',
+  },
+  {
+    iconName: 'sports-soccer',
+    Type: 'material',
+    color: '#74c2ec',
+    text: 'Sports',
+  },
+  {
+    iconName: 'star-o',
+    Type: 'font-awesome',
+    color: '#bd73d8',
+    text: 'Shows',
+  },
+  {iconName: 'disc', Type: 'feather', color: '#60ec5e', text: 'Discount'},
+];
+
+export const CardData = [
+  {
+    month: 'Oct',
+    date: '31',
+    fulldate: 'Thu,oct,31 9:00AM',
+    address: 'Tobacco Dock London',
+    heading1: 'BBC Music',
+    heading2: 'Introducing LIVE',
+    image: 'https://source.unsplash.com/1600x900/?nightclub13',
+  },
+  {
+    month: 'Oct',
+    date: '31',
+    fulldate: 'Thu,oct,31 9:00AM',
+    address: 'Tobacco Dock London',
+    heading1: 'BBC Music',
+    heading2: 'Introducing LIVE',
+    image: 'https://source.unsplash.com/1600x900/?nightclub12',
+  },
+  {
+    month: 'Oct',
+    date: '31',
+    fulldate: 'Thu,oct,31 9:00AM',
+    address: 'Tobacco Dock London',
+    heading1: 'BBC Music',
+    heading2: 'Introducing LIVE',
+    image: 'https://source.unsplash.com/1600x900/?nightclub11',
+  },
+  {
+    month: 'Oct',
+    date: '31',
+    fulldate: 'Thu,oct,31 9:00AM',
+    address: 'Tobacco Dock London',
+    heading1: 'BBC Music',
+    heading2: 'Introducing LIVE',
+    image: 'https://source.unsplash.com/1600x900/?nightclub130',
+  },
+  {
+    month: 'Oct',
+    date: '31',
+    fulldate: 'Thu,oct,31 9:00AM',
+    address: 'Tobacco Dock London',
+    heading1: 'BBC Music',
+    heading2: 'Introducing LIVE',
+    image: 'https://source.unsplash.com/1600x900/?nightclub21',
+  },
+  {
+    month: 'Oct',
+    date: '31',
+    fulldate: 'Thu,oct,31 9:00AM',
+    address: 'Tobacco Dock London',
+    heading1: 'BBC Music',
+    heading2: 'Introducing LIVE',
+    image: 'https://source.unsplash.com/1600x900/?nightclub111',
+  },
+];
